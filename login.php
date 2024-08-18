@@ -100,8 +100,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label>Password</label>
         <input type="password" name="password">
         <span><?php echo $password_err; ?></span><br>
-
         <input type="submit" value="Login">
+        <p>Belum punya akun? <a href="register.php">Daftar disini.</a></p>
     </form>
 </body>
 </html>
