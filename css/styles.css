@@ -23,6 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Ensure the body takes up full viewport height */
+    margin: 0;
 }
 
 header {
@@ -71,12 +72,13 @@ nav ul li a:hover {
 
 main {
     flex: 1;
-    display: flex;
+    flex-grow: 1;
+    z-index: 1;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
-    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 30px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -97,7 +99,7 @@ main {
     margin: 10px;
     padding: 20px;
     text-align: center;
-    cursor: pointer;
+    cursor: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
@@ -135,6 +137,7 @@ main {
 
 .sidebar {
     flex: 1;
+    z-index: 45;
     max-width: 200px;
     background-color: #f0f0f0cc;
     padding: 20px;
@@ -269,7 +272,7 @@ main {
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
+    cursor: none;
 }
 
 
@@ -331,6 +334,172 @@ main {
     font-weight: bold;
 }
 
+.sidebar1 {
+    position: fixed;
+    right: -300px; /* Adjusted to match the width of the sidebar */
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #f4f4f4;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 40;
+}
+
+.sidebar1.open {
+    right: 0; /* Slide in from the right */
+}
+
+/* Toggle button styles */
+.sidebar-toggle {
+    position: fixed;
+    right: 0; /* Keep the toggle button at the edge of the screen */
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    cursor: none;
+    z-index: 45; /* Higher than the sidebar but lower than the cursor */
+    padding-right: 20px; /* Adjust padding if needed */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a slight shadow for emphasis */
+}
+
+/* Main content adjustments */
+.main-content {
+    transition: margin-right 0.3s ease;
+}
+
+.main-content.sidebar-open {
+    margin-right: 250px; /* Adjust to accommodate sidebar width */
+}
+
+.logout-button {
+    position: absolute;
+    bottom: 60px;
+    left: 20px;
+    width: 200px;
+    text-align: center;
+}
+
+.logout-button a {
+    display: block;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.logout-button a:hover {
+    background-color: darkred;
+}
+
+.button-container {
+    position: relative;
+    gap: 10px;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 10px;
+    background-color: #ffffff94;
+    border-top: 1px solid #ddd;
+    align-items: center; /* Center the buttons horizontally */
+}
+
+.edit-mode-toggle,
+.edit-mode-toggle:focus,
+.edit-mode-toggle:active {
+    background-color: #f7690b;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: none;
+    text-align: center;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.edit-mode-toggle:hover {
+    background-color: #e24304;
+}
+
+button,
+button:focus,
+button:active {
+    background-color: #f7690b;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: none;
+    border-radius: 4px;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #e24304;
+}
+
+#edit-mode {
+    display: none;
+}
+#stickers-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#stickers-list ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#stickers-list ul li img {
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.delete-sticker-button {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px; /* Smaller text size for better alignment */
+}
+
+.delete-sticker-button:hover {
+    background-color: #d32f2f;
+}
+.custom-back-button {
+    background-color: #e12108; /* Change this color to whatever you prefer */
+    color: white; /* Text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.custom-back-button:hover {
+    background-color: #c30202; /* Darker shade on hover */
+}
+
+.viewed-post-container {
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    margin: 20px 0; /* Add margin for spacing */
+}
+
+
+
+
 
 
 footer {
@@ -358,7 +527,7 @@ footer p a:hover {
     background: url('../image/default-cursor.png') no-repeat center center;
     background-size: contain;
     pointer-events: none; /* Ensure it doesn't block interactions */
-    z-index: 1000; /* Ensure it appears above other elements */
+    z-index: 9000; /* Ensure it appears above other elements */
 }
 
 .custom-cursor.active {
@@ -382,7 +551,7 @@ body.loading {
     background-color: rgba(20, 1, 24, 0.5); /* Semi-transparent black */
     border-radius: 50%;
     pointer-events: none; /* Ensure it doesn't block interactions */
-    z-index: 999; /* Ensure it appears above other elements */
+    z-index: 8000; /* Ensure it appears above other elements */
     transform: translate(-50%, -50%);
 }
 

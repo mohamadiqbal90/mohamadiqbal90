@@ -53,7 +53,7 @@ window.addEventListener('beforeunload', () => {
     document.body.classList.add('loading');
 });
 
-document.querySelectorAll('a, button,li,ul').forEach(el => {
+document.querySelectorAll('a, button,li,ul,img').forEach(el => {
     el.addEventListener('mouseenter', () => {
         site_wide_cursor.classList.add('active');
     });
@@ -62,7 +62,7 @@ document.querySelectorAll('a, button,li,ul').forEach(el => {
     });
 });
 
-document.querySelectorAll('p, h3,h1,h2,table').forEach(el => {
+document.querySelectorAll('p,table').forEach(el => {
     el.addEventListener('mouseenter', () => {
         site_wide_cursor.classList.add('text');
     });
